@@ -43,7 +43,7 @@ func setup(client: inout URLSession, completion: @escaping (String?, [HTTPCookie
             if let match = regex.firstMatch(in: html, options: [], range: range),
                let tokenRange = Range(match.range(at: 1), in: html) {
                 let userToken = String(html[tokenRange])
-                print("User Token: \(userToken)") // Выводим userToken
+                print("User Token: \(userToken)")
                 
                 if let httpResponse = response as? HTTPURLResponse,
                    let url = response?.url {
@@ -79,7 +79,7 @@ func tryLogin(client: inout URLSession, userToken: String, phpSessionId: [HTTPCo
     request.httpMethod = "GET"
     request.setValue("Mozilla/5.0 (compatible)", forHTTPHeaderField: "User-Agent")
 
-    request.setValue("PHPSESSID=\(phpSessionId); security=low", forHTTPHeaderField: "Cookie")
+    request.setValue("PHPSESSID=lu98i2jtpnl72sh2ibcfg3kgg5; security=low", forHTTPHeaderField: "Cookie")
     
     let task = client.dataTask(with: request) { data, response, error in
         guard let data = data, error == nil else {
